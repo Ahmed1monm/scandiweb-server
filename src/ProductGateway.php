@@ -11,7 +11,7 @@ class ProductGateway extends ProductGatewayAbstract
     
     public function getAll(): array
     {
-        $sql = "SELECT p.*, t.name AS type_name
+        $sql = "SELECT p.id, p.name, p.sku, p.price,p.size, p.weight, p.dimensions, t.name AS type
                 FROM products p
                 Join product_type t ON t.id = p.type";
                 
