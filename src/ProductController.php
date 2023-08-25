@@ -67,7 +67,7 @@ class ProductController
         if (empty($data["name"])) {
             $errors[] = "name is required";
         }
-        if (empty($data["SKU"])) {
+        if (empty($data["sku"])) {
             $errors[] = "SKU is required";
         }
         if (empty($data["price"])) {

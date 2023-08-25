@@ -39,7 +39,7 @@ class ProductGateway extends ProductGatewayAbstract
         try {
             $stmt->bindValue(':name',       $data["name"], PDO::PARAM_STR);
 //            $stmt->bindValue(':type',       $data["type"], PDO::PARAM_INT);
-            $stmt->bindValue(':SKU',        $data["SKU"], PDO::PARAM_STR);
+            $stmt->bindValue(':SKU',        $data["sku"], PDO::PARAM_STR);
             $stmt->bindValue(':price',      $data["price"], PDO::PARAM_INT);
             $stmt->bindValue(':weight',     $data["weight"]?? null, PDO::PARAM_INT);
             $stmt->bindValue(':size',       $data["size"] ?? null, PDO::PARAM_INT);
