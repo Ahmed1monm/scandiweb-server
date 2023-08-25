@@ -11,9 +11,8 @@ class ProductGateway extends ProductGatewayAbstract
     
     public function getAll(): array
     {
-        $sql = "SELECT p.id, p.name, p.sku, p.price,p.size, p.weight, p.dimensions, t.name AS type
-                FROM products p
-                Join product_type t ON t.id = p.type";
+        $sql = "SELECT p.id, p.sku, p.name, p.price,p.size, p.weight, p.dimensions
+                FROM products p";
                 
         $stmt = $this->conn->query($sql);
         
@@ -28,8 +27,8 @@ class ProductGateway extends ProductGatewayAbstract
     
     public function create(array $data): string
     {
-        $sql = "INSERT INTO products (name, type, SKU, price, weight, size, dimensions)
-                VALUES (:name, :type, :SKU, :price, :weight, :size, :dimensions)";        
+        $sql = "INSERT INTO products (name, SKU, price, weight, size, dimensions)
+                VALUES (:name, :SKU, :price, :weight, :size, :dimensions)";
         $stmt = $this->conn->prepare($sql);
 
         if ($stmt === false) {
@@ -39,7 +38,7 @@ class ProductGateway extends ProductGatewayAbstract
     
         try {
             $stmt->bindValue(':name',       $data["name"], PDO::PARAM_STR);
-            $stmt->bindValue(':type',       $data["type"], PDO::PARAM_INT);
+//            $stmt->bindValue(':type',       $data["type"], PDO::PARAM_INT);
             $stmt->bindValue(':SKU',        $data["SKU"], PDO::PARAM_STR);
             $stmt->bindValue(':price',      $data["price"], PDO::PARAM_INT);
             $stmt->bindValue(':weight',     $data["weight"]?? null, PDO::PARAM_INT);

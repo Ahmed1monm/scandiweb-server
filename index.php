@@ -11,10 +11,16 @@ set_exception_handler("ErrorHandler::handleException");
 
 header("Content-type: application/json; charset=UTF-8");
 
-// Set CORS headers to allow all origins
 header("Access-Control-Allow-Origin: *");
-header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE");
+header("Access-Control-Allow-Methods: GET, POST, DELETE, OPTIONS");
 header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
+
+if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
+    header("Access-Control-Allow-Origin: *");
+    header("Access-Control-Allow-Methods: GET, POST, DELETE, OPTIONS");
+    header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
+    exit;
+}
 
 $parts = explode("/", $_SERVER["REQUEST_URI"]);
 
