@@ -31,7 +31,7 @@ if ($parts[3] != "products") {
 
 $id = $parts[4] ?? null;
 
-$database = new Database("localhost", "product_db", "root", "");
+$database = new Database("localhost", "product_db", "admin", "0323f21a07f82f410f93b34e92c7f05fa98c56e235d898ea");
 
 $gateway = new ProductGateway($database);
 
