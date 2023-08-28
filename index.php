@@ -24,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
 
 $parts = explode("/", $_SERVER["REQUEST_URI"]);
 
-if ($parts[3] != "products") {
+if ($parts[2] != "products") {
     http_response_code(404);
     exit;
 }
